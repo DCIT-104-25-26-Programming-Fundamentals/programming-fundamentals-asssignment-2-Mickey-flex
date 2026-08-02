@@ -42,3 +42,59 @@
 #include <iostream>
 using namespace std;
 
+int sum(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+double average(int arr[], int size) {
+    return static_cast<double>(sum(arr, size)) / size;
+}
+
+int maximum(int arr[], int size) {
+    int max = arr[0];
+    for (int i = 1; i < size; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+int minimum(int arr[], int size) {
+    int min = arr[0];
+    for (int i = 1; i < size; i++) {
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+    }
+    return min;
+}
+
+int main() {
+    int n;
+    cout << "How many numbers? ";
+    cin >> n;
+
+    if (n <= 0) {
+        cout << "Error: N must be a positive integer." << "\n";
+        return 1;
+    }
+
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        cout << "Enter number " << (i + 1) << ": ";
+        cin >> arr[i];
+    }
+
+    cout << "\nResults:" << endl;
+    cout << "Sum:     " << sum(arr, n) << "\n";
+    cout << "Average: " << average(arr, n) << "\n";
+    cout << "Maximum: " << maximum(arr, n) << "\n";
+    cout << "Minimum: " << minimum(arr, n) << "\n";
+
+    return 0;
+}

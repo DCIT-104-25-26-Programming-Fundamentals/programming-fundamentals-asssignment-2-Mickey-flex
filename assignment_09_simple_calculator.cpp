@@ -73,3 +73,99 @@
 #include <cmath>
 using namespace std;
 
+double add(double a, double b) {
+    return a + b;
+}
+
+double subtract(double a, double b) {
+    return a - b;
+}
+
+double multiply(double a, double b) {
+    return a * b;
+}
+
+double divide(double a, double b) {
+    if (b == 0) {
+        cout << "Error: Cannot divide by zero.\n";
+        return NAN;
+    }
+    return a / b;
+}
+
+double mod_op(double a, double b) {
+    if (b == 0) {   
+        cout << "Error: Cannot perform modulus by zero.\n";
+        return NAN;
+    }
+    return fmod(a, b);
+}
+
+double power(double a, double b) {
+    return pow(a, b);
+}
+
+int main() {
+    int choice;
+    double num1, num2, result;
+
+    do {
+        cout << "============================\n";
+        cout << "     SIMPLE CALCULATOR\n";
+        cout << "============================\n";
+        cout << "1. Addition\n";
+        cout << "2. Subtraction\n";
+        cout << "3. Multiplication\n";
+        cout << "4. Division\n";
+        cout << "5. Modulus\n";
+        cout << "6. Exponentiation\n";
+        cout << "7. Quit\n";
+        cout << "Select an operation (1-7): ";
+        cin >> choice;
+
+        if (choice >= 1 && choice <= 6) {
+            cout << "Enter first number : ";
+            cin >> num1;
+            cout << "Enter second number: ";
+            cin >> num2;
+        }
+
+        switch (choice) {
+            case 1:
+                result = add(num1, num2);
+                cout << fixed << setprecision(2) << num1 << " + " << num2 << " = " << result << "\n";
+                break;
+            case 2:
+                result = subtract(num1, num2);
+                cout << fixed << setprecision(2) << num1 << " - " << num2 << " = " << result << "\n";
+                break;
+            case 3:
+                result = multiply(num1, num2);
+                cout << fixed << setprecision(2) << num1 << " * " << num2 << " = " << result << "\n";
+                break;
+            case 4:
+                result = divide(num1, num2);
+                if (!isnan(result)) {
+                    cout << fixed << setprecision(2) << num1 << " / " << num2 << " = " << result << "\n";
+                }
+                break;
+            case 5:
+                result = mod_op(num1, num2);
+                if (!isnan(result)) {
+                    cout << fixed << setprecision(2) << num1 << " % " << num2 << " = " << result << "\n";
+                }
+                break;
+            case 6:
+                result = power(num1, num2);
+                cout << fixed << setprecision(2) << num1 << "^" << num2 << " = " << result << "\n";
+                break;
+            case 7:
+                cout << "Goodbye!\n";
+                break;
+            default:
+                cout << "Error: Invalid choice. Please select a number between 1 and 7  .\n";
+        }
+    } while (choice != 7);
+    return 0;
+}
+
